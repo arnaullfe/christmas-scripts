@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎄 Christmas Scripts - Festive Web Animations</title>
+    <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+            color: #fff;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 3rem 0 2rem;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 50%, #ffe66d 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 4px 20px rgba(255, 255, 255, 0.3);
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            animation: titleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes titleGlow {
+            0%, 100% { filter: drop-shadow(0 0 10px rgba(255, 107, 107, 0.5)); }
+            50% { filter: drop-shadow(0 0 25px rgba(78, 205, 196, 0.8)); }
+        }
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: #a0e7e5;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .intro {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .intro p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0f7fa;
+        }
+
+        .scripts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .script-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .script-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #ffe66d, #95e1d3);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .script-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .script-card:hover::before {
+            opacity: 1;
+        }
+
+        .script-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .script-card h3 {
+            font-family: 'Mountains of Christmas', cursive;
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #ffe66d;
+        }
+
+        .script-card p {
+            color: #b0e0e6;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .code-block {
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            overflow-x: auto;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .code-block code {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            color: #a5f3fc;
+            display: block;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .params-table {
+            margin-top: 1.5rem;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+            padding: 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .params-table h4 {
+            color: #ffd54f;
+            font-size: 0.9rem;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .param-row {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .param-row:last-child {
+            border-bottom: none;
+        }
+
+        .param-name {
+            color: #81d4fa;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .param-desc {
+            color: #b0bec5;
+            font-size: 0.8rem;
+            line-height: 1.4;
+        }
+
+        .param-default {
+            color: #a5d6a7;
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        footer p {
+            color: #90caf9;
+            font-size: 0.95rem;
+        }
+
+        .badge {
+            display: inline-block;
+            background: rgba(255, 107, 107, 0.2);
+            color: #ff6b6b;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            border: 1px solid rgba(255, 107, 107, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .scripts-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎄 Christmas Scripts</h1>
+            <p class="subtitle">Beautiful, lightweight JavaScript animations to bring holiday cheer to your website</p>
+        </header>
+
+        <div class="intro">
+            <p>
+                Transform your website into a winter wonderland with these delightful Christmas-themed JavaScript animations! 
+                Each script is designed to be lightweight, easy to integrate, and customizable with URL parameters. 
+                Simply include the script tag and watch the magic happen! ✨
+            </p>
+        </div>
+
+        <div class="scripts-grid">
+            <!-- Snowflakes Card -->
+            <div class="script-card">
+                <span class="script-icon">❄️</span>
+                <h3>Snowflakes</h3>
+                <p>Create beautiful falling snowflakes across your entire page with automatic theme detection.</p>
+                
+                <div class="params-table">
+                    <h4>📋 Parameters:</h4>
+                    <div class="param-row">
+                        <span class="param-name">startDate</span>
+                        <span class="param-desc">When to start showing snowflakes (MM-DD format)</span>
+                        <span class="param-default">Default: "12-01"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">endDate</span>
+                        <span class="param-desc">When to stop showing snowflakes (MM-DD format)</span>
+                        <span class="param-default">Default: "01-15"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">theme</span>
+                        <span class="param-desc">Color scheme: "light", "dark", or null for auto-detection</span>
+                        <span class="param-default">Default: auto-detect</span>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <code>&lt;script src="christmas-snowflakes.js?startDate=11-01&endDate=01-10&theme=dark"&gt;&lt;/script&gt;</code>
+                </div>
+            </div>
+
+            <!-- Garlands Card -->
+            <div class="script-card">
+                <span class="script-icon">🎀</span>
+                <h3>Garlands</h3>
+                <p>Decorate your page with festive garlands that gently sway and breathe.</p>
+                
+                <div class="params-table">
+                    <h4>📋 Parameters:</h4>
+                    <div class="param-row">
+                        <span class="param-name">startDate</span>
+                        <span class="param-desc">When to start showing garlands (MM-DD format)</span>
+                        <span class="param-default">Default: "12-01"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">endDate</span>
+                        <span class="param-desc">When to stop showing garlands (MM-DD format)</span>
+                        <span class="param-default">Default: "01-15"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">position</span>
+                        <span class="param-desc">Where to place garlands: "top", "bottom", or "both"</span>
+                        <span class="param-default">Default: "both"</span>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <code>&lt;script src="christmas-garlands.js?startDate=11-01&endDate=01-10&position=both"&gt;&lt;/script&gt;</code>
+                </div>
+            </div>
+
+            <!-- Santa Claus Card -->
+            <div class="script-card">
+                <span class="script-icon">🎅</span>
+                <h3>Santa Claus</h3>
+                <p>Watch Santa fly across your screen in his sleigh, spreading holiday joy!</p>
+                
+                <div class="params-table">
+                    <h4>📋 Parameters:</h4>
+                    <div class="param-row">
+                        <span class="param-name">startDate</span>
+                        <span class="param-desc">When to start Santa's flights (MM-DD format)</span>
+                        <span class="param-default">Default: "12-01"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">endDate</span>
+                        <span class="param-desc">When to stop Santa's flights (MM-DD format)</span>
+                        <span class="param-default">Default: "01-15"</span>
+                    </div>
+                    <div class="param-row">
+                        <span class="param-name">onlyHorizontalMovements</span>
+                        <span class="param-desc">Set to "true" or "1" for horizontal-only flight path</span>
+                        <span class="param-default">Default: false (diagonal movement enabled)</span>
+                    </div>
+                </div>
+
+                <div class="code-block">
+                    <code>&lt;script src="christmas-santa-claus.js?startDate=11-01&endDate=01-10&onlyHorizontalMovements=false"&gt;&lt;/script&gt;</code>
+                </div>
+            </div>
+
+            <!-- Lights Card -->
+            <div class="script-card">
+              <span class="script-icon">💡</span>
+              <h3>Christmas Lights</h3>
+              <p>Add colorful twinkling lights around the borders of your webpage.</p>
+              
+              <div class="params-table">
+                  <h4>📋 Parameters:</h4>
+                  <div class="param-row">
+                      <span class="param-name">startDate</span>
+                      <span class="param-desc">When to start showing lights (MM-DD format)</span>
+                      <span class="param-default">Default: "12-01"</span>
+                  </div>
+                  <div class="param-row">
+                      <span class="param-name">endDate</span>
+                      <span class="param-desc">When to stop showing lights (MM-DD format)</span>
+                      <span class="param-default">Default: "01-15"</span>
+                  </div>
+                  <div class="param-row">
+                      <span class="param-name">theme</span>
+                      <span class="param-desc">Color scheme: "light", "dark", or null for auto-detection</span>
+                      <span class="param-default">Default: auto-detect</span>
+                  </div>
+                  <div class="param-row">
+                      <span class="param-name">positions</span>
+                      <span class="param-desc">Comma-separated positions: "top", "right", "bottom", "left"</span>
+                      <span class="param-default">Default: "top,right,bottom,left"</span>
+                  </div>
+              </div>
+
+              <div class="code-block">
+                  <code>&lt;script src="christmas-lights.js?startDate=11-01&endDate=01-10&positions=top,bottom&theme=dark"&gt;&lt;/script&gt;</code>
+              </div>
+          </div>
+        </div>
+
+        
+
+        <footer>
+            <p>🎁 Made with love and holiday spirit • Customize dates and themes via URL parameters • Enjoy the festive season! 🎄</p>
+        </footer>
+    </div>
+
+    <!-- Load the Christmas Scripts -->
+    <script src="https://cdn.jsdelivr.net/gh/arnaullfe/christmas-scripts/christmas-snowflakes.min.js?startDate=11-01&endDate=01-10"></script>
+    <script src="https://cdn.jsdelivr.net/gh/arnaullfe/christmas-scripts/christmas-lights.min.js?startDate=11-01&endDate=01-10&positions=right,left"></script>
+     <!-- <script src="https://cdn.jsdelivr.net/gh/arnaullfe/christmas-scripts/christmas-garlands.min.js&startDate=11-01&endDate=01-10&position=both&development=true"></script> -->
+     <script src="https://cdn.jsdelivr.net/gh/arnaullfe/christmas-scripts@e5f4bdd/christmas-garlands.min.js?v=1&startDate=11-01&endDate=01-10&position=both&development=true"></script>
+    <script src="https://cdn.jsdelivr.net/gh/arnaullfe/christmas-scripts/christmas-santa-claus.min.js?startDate=11-01&endDate=01-10"></script>
+</body>
+</html>
